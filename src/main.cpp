@@ -1,6 +1,6 @@
 #include <mbed.h>
 #include <inttypes.h>
-
+//Program by Bharat Goel for solar car 
 CAN can0(D10, D2);   // CAN bus pins
 Serial xbee(D1, D0); //Tx and Rx pins on stm
 CANMessage Msg;
@@ -16,13 +16,13 @@ int main()
 
   while (1)
   {
-   
+
     if (can0.read(Msg))
     {
 
       if (Msg.id == 0x423)
       {
-
+        led = !led;
         sendMsg(Msg);
       }
     }
